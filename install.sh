@@ -22,7 +22,7 @@ esac
 
 # Define the paths
 source_dir="/dracula-androidide/$theme_dir"
-destination_dir="$HOME/.androidide/ui/editor/schemes"
+destination_dir="$HOME/.androidide/ui/editor/schemes/"
 
 # Check if the source directory exists
 if [ ! -d "$source_dir" ]; then
