@@ -3,7 +3,7 @@
 # Prompt the user to choose a theme
 echo "Choose a theme:"
 echo "1. Dracula"
-echo "2. Dracula (clean background)"
+echo "2. Dracula with Clean Background"
 read -p "Enter your choice (1 or 2): " choice
 
 # Validate the user's choice
@@ -20,9 +20,9 @@ case $choice in
     ;;
 esac
 
-# Define the paths
-source_dir="/dracula-androidide/$theme_dir"
-destination_dir="$HOME/.androidide/ui/editor/schemes/"
+# Define the source and destination paths
+source_dir="dracula-androidide/$theme_dir"
+destination_dir="$HOME/.androidide/ui/editor/schemes"
 
 # Check if the source directory exists
 if [ ! -d "$source_dir" ]; then
@@ -30,10 +30,12 @@ if [ ! -d "$source_dir" ]; then
   exit 1
 fi
 
-# Create the destination directory if it doesn't exist
-mkdir -p "$destination_dir"
+# Remove the destination directory if it exists
+if [ -d "$destination_dir" ]; then
+  rm -r "$destination_dir"
+fi
 
-# Copy the theme folder to idetheme
+# Copy the theme folder to the destination
 cp -R "$source_dir" "$destination_dir"
 
 # Check if the copy operation was successful
